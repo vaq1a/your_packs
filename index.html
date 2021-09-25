@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /*common*/
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main {
+            background-color: #000;
+        }
+
+        /*layout*/
+        .container {
+            max-width: 1039px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 25px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content .content__cell {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 88px;
+            column-gap: 5%;
+            width: 100%;
+        }
+
+        .grid .cell {
+            width: 30%;
+        }
+
+        /*Content*/
+
+        .content__cell_first {
+            background-image: url("./img/background-planet.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .content__cell_second {
+            background-image: url("./img/background-sky.png");
+            background-repeat: repeat-y;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .content__cell_second .container {
+            position: relative;
+            top: -96px;
+        }
+
+        /*logotype*/
+        .logotype {
+            display: block;
+            max-width: 271px;
+        }
+
+        .logotype__image {
+            height: unset;
+            max-width: 100%;
+        }
+
+        .logotype.logotype_indent {
+            margin: 38px auto 252px;
+        }
+
+        /*title*/
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 35px;
+            line-height: 33px;
+            color: #fff;
+        }
+
+        .title.title_center {
+            text-align: center;
+        }
+
+        .title.title_indent {
+            margin-bottom: 15px;
+        }
+
+        /*text*/
+        .text {
+            font-size: 16px;
+            line-height: 21px;
+            color: #859AAA;
+        }
+
+        .text.text_indent {
+            margin-bottom: 158px;
+        }
+
+        .text.text_center {
+            text-align: center;
+        }
+
+        .text .text_bold {
+            color: #fff;
+        }
+
+        /*pack*/
+        .pack {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .pack__image-wrapper {
+            width: 100%;
+            position: relative;
+            padding-bottom: 100%;
+            height: 0;
+            background-color: #406783;
+            border: 4px solid transparent;
+        }
+
+        .pack__image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            max-height: 100%;
+            max-width: 100%;
+            height: 100%;
+            width: 100%;
+            padding: 2px;
+        }
+
+        .pack__button {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            line-height: 15px;
+            text-transform: uppercase;
+            padding: 22px 0;
+            max-width: 225px;
+            width: 100%;
+            color: #fff;
+            background-color: #248AE6;
+            border: 0;
+            cursor: pointer;
+            margin-top: 17px;
+        }
+
+        .pack__text {
+            font-size: 16px;
+            line-height: 15px;
+            color: #878888;
+            margin-top: 40px;
+        }
+
+        .pack.opened .pack__image-wrapper {
+            filter: grayscale(100%);
+        }
+
+        /*pack hover*/
+        .pack.primary:hover .pack__image-wrapper {
+            border: 4px solid #fff;
+        }
+
+        .pack.primary:hover .pack__button {
+            background-color: #49A9FF;
+        }
+
+        /*field*/
+        .field {
+            max-width: 534px;
+            height: 158px;
+            width: 100%;
+            border: 2px dotted #406783;
+        }
+
+        .field.field_indent {
+            margin: 85px auto 73px
+        }
+
+        /*footer-logotype*/
+        .footer-logotype {
+            max-width: 72px;
+        }
+
+        .footer-logotype.footer-logotype_indent {
+            margin-top: 50px;
+            margin-bottom: 85px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-logotype .footer-logotype__image {
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /*adaptive*/
+        @media screen and (min-width: 1920px) {
+            .logotype.logotype_indent {
+                margin-bottom: 460px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .grid {
+                column-gap: 5%;
+            }
+
+            .grid .cell {
+                width: 47.5%;
+            }
+        }
+
+        @media screen and (max-width: 640px) {
+            .main {
+                background-size: auto;
+            }
+
+            .grid {
+                column-gap: 0;
+            }
+
+            .grid .cell {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="content">
+            <div class="content__cell content__cell_first">
+                <div class="container">
+                    <div class="logotype logotype_indent">
+                        <img src="./img/logotype.png" alt="Logotype">
+                    </div>
+
+                    <div class="title title_indent title_center">
+                        Your packs
+                    </div>
+
+                    <div class="text text_indent text_center">
+                        Select a Pack to open
+                    </div>
+                </div>
+            </div>
+            <div class="content__cell content__cell_second">
+                <div class="container">
+                    <div class="grid">
+                        <div class="cell">
+                            <div class="pack primary">
+                                <div class="pack__image-wrapper">
+                                        <img class="pack__image" src="./img/pack.png" alt="Pack image">
+                                    </div>
+                                <button class="pack__button">
+                                        OPEN PACK
+                                    </button>
+                            </div>
+                        </div>
+
+                        <div class="cell">
+                            <div class="pack primary">
+                                    <div class="pack__image-wrapper">
+                                        <img class="pack__image" src="./img/pack.png" alt="Pack image">
+                                    </div>
+                                    <button class="pack__button">
+                                        OPEN PACK
+                                    </button>
+                                </div>
+                        </div>
+
+                        <div class="cell">
+                            <div class="pack primary">
+                                    <div class="pack__image-wrapper">
+                                        <img class="pack__image" src="./img/pack.png" alt="Pack image">
+                                    </div>
+                                    <button class="pack__button">
+                                        OPEN PACK
+                                    </button>
+                                </div>
+                        </div>
+
+                        <div class="cell">
+                            <div class="pack primary">
+                                    <div class="pack__image-wrapper">
+                                        <img class="pack__image" src="./img/pack.png" alt="Pack image">
+                                    </div>
+                                    <button class="pack__button">
+                                        OPEN PACK
+                                    </button>
+                                </div>
+                        </div>
+
+                        <div class="cell">
+                            <div class="pack opened">
+                                    <div class="pack__image-wrapper">
+                                        <img class="pack__image" src="./img/pack.png" alt="Pack image">
+                                    </div>
+                                    <div class="pack__text">
+                                        Pack is opened
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="field field_indent"></div>
+
+                    <div class="text text_center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br>
+                        tempor incididunt ut labore et dolore magna aliqua. Quis ipsum <br>
+                        suspendisse ultrices gravida. <span class="text_bold">Risus commodo</span> viverra maecenas accumsan <br>
+                        lacus vel facilisis.
+                    </div>
+
+                    <div class="footer-logotype footer-logotype_indent">
+                        <img class="footer-logotype__image" src="./img/logo-footer.png" alt="Logotype">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
